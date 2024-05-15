@@ -10,9 +10,11 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
 import jakarta.annotation.security.PermitAll;
 
-@Route(value = "dashboard", layout = MainLayout.class)
+@Route(value = "", layout = MainLayout.class)
+@RouteAlias(value = "")
 @PageTitle("Pie Chart | Gear List")
 @PermitAll
 public class DashboardView extends VerticalLayout {
@@ -24,7 +26,7 @@ public class DashboardView extends VerticalLayout {
         addClassName("dashboard-view");
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
         String getGearStats;
-        add(getGearStats(), getCatgegoriesChart());
+        add(getGearStats(), getCategoriesChart());
     }
 
     private Component getGearStats() {
@@ -33,7 +35,7 @@ public class DashboardView extends VerticalLayout {
         return stats;
     }
 
-    private Component getCatgegoriesChart() {
+    private Component getCategoriesChart() {
         Chart chart = new Chart(ChartType.PIE);
 
         DataSeries dataSeries = new DataSeries();

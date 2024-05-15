@@ -5,10 +5,15 @@ import com.example.application.services.GearListService;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.charts.Chart;
+import com.vaadin.flow.component.charts.model.ChartType;
+import com.vaadin.flow.component.charts.model.DataSeries;
+import com.vaadin.flow.component.charts.model.DataSeriesItem;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -27,14 +32,14 @@ import java.util.Collections;
 @SpringComponent
 @Scope("prototype")
 @PageTitle("Hiking Gear List")
-@Route(value = "", layout = MainLayout.class)
-@RouteAlias(value = "")
+@Route(value = "listview", layout = MainLayout.class)
+//@RouteAlias(value = "")
 @PermitAll
 public class ListView extends VerticalLayout {
     Grid<Gear> grid = new Grid<>(Gear.class);
     TextField filterText = new TextField();
     GearForm form;
-    private GearListService service;
+    GearListService service;
 
     public ListView(GearListService service) {
         this.service = service;
@@ -134,6 +139,5 @@ public class ListView extends VerticalLayout {
             addClassName("editing");
         }
     }
-
 
 }
